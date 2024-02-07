@@ -22,8 +22,8 @@ function App() {
       {index: true, path: 'home' , element: <Home/>},
       {path: 'cart' , element: <Cart/>},
       {path: 'products' , element: <Products/>},
-      {path: 'categries' , element: <Categories/>},
-      {path: 'brand' , element: <Brands/>},
+      {path: 'categories' , element: <Categories/>},
+      {path: 'brands' , element: <Brands/>},
       {path: 'wishlist' , element: <WishList/>},
     ]
     },

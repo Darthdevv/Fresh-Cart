@@ -15,6 +15,7 @@
 
 body{
     font-family: var(--font-family) !important;
+    background-color: var(--light-color);
 }
 .rating-color
 {
@@ -60,4 +61,25 @@ a , a:hover{
 .bg-main-light 
 {
     background-color: var(--light-color) !important;
+}
+
+.menu li > *:not(ul):not(.menu-title):not(details):active, .menu li > *:not(ul):not(.menu-title):not(details).active, .menu li > details > summary:active {
+    color: var(--main-color);
+    font-weight: bolder;
+    background-color: transparent;
+}
+
+.btn-accent {
+    --tw-text-opacity: 1;
+    color: var(--light-color);
+    outline-color: var(--main-color);
+    background-color: var(--main-color);
+}
+
+.btn-accent {
+    --btn-color: var(--main-color);
+}
+
+.btn-accent:hover {
+    background-color: #39d039;
 }
