@@ -1,4 +1,14 @@
-import { RouterProvider,createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import MainLayout from './layouts/MainLayout'
+import AuthLayout from './layouts/AuthLayout'
+import Home from './pages/Home'
+import Cart from './pages/Cart'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import Brands from './pages/Brands'
+import Categories from './pages/Categories'
+import Products from './pages/Products'
+import WishList from './pages/WishList'
 
 import './App.css'
 
@@ -13,7 +23,7 @@ function App() {
       {path: 'cart' , element: <Cart/>},
       {path: 'products' , element: <Products/>},
       {path: 'categries' , element: <Categories/>},
-      {path: 'brand' , element: <Brand/>},
+      {path: 'brand' , element: <Brands/>},
       {path: 'wishlist' , element: <WishList/>},
     ]
     },
