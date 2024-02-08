@@ -23,16 +23,42 @@ function Navbar() {
                 <NavLink to={"/brands"}>Brands</NavLink>
               </li>
               <li>
-                <NavLink to={"/wishlist"}>WishList</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/cart"}>Cart</NavLink>
+                <NavLink to={"/home"}>Home</NavLink>
               </li>
             </ul>
           </div>
         </div>
-        <div className="">
-          <div className="dropdown dropdown-end">
+        <div>
+          <Link to={'/wishlist'} className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle"
+            >
+              <div className="indicator">
+                <span>
+                  <svg
+                    width="18"
+                    className="h-5 w-5"
+                    height="18"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15 8C8.92487 8 4 12.9249 4 19C4 30 17 40 24 42.3262C31 40 44 30 44 19C44 12.9249 39.0751 8 33 8C29.2797 8 25.9907 9.8469 24 12.6738C22.0093 9.8469 18.7203 8 15 8Z"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      strokeLinecap="butt"
+                      strokeLinejoin="bevel"
+                    ></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </Link>
+          <Link to={'/cart'} className="dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
@@ -60,23 +86,23 @@ function Navbar() {
             </div>
             <div
               tabIndex={0}
-              className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+              className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-[#f0f3f2] shadow"
             >
               <div className="card-body">
                 <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="text-[#0aad0a] font-semibold">Subtotal: $999</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
+                  <button className="btn btn-accent btn-block">
                     View cart
                   </button>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <a>Link</a>
+                <Link>SignOut</Link>
               </li>
             </ul>
           </div>

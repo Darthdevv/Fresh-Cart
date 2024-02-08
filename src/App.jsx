@@ -11,29 +11,33 @@ import Products from './pages/Products'
 import WishList from './pages/WishList'
 
 import './App.css'
+import NotFound from './components/NotFound'
 
 function App() {
 
   const router = createBrowserRouter([
     {
-    path: '/',
-    element: <MainLayout />,
-    children: [
-      {index: true, path: 'home' , element: <Home/>},
-      {path: 'cart' , element: <Cart/>},
-      {path: 'products' , element: <Products/>},
-      {path: 'categories' , element: <Categories/>},
-      {path: 'brands' , element: <Brands/>},
-      {path: 'wishlist' , element: <WishList/>},
-    ]
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        { index: true, path: "home", element: <Home /> },
+        { path: "cart", element: <Cart /> },
+        { path: "products", element: <Products /> },
+        { path: "categories", element: <Categories /> },
+        { path: "brands", element: <Brands /> },
+        { path: "wishlist", element: <WishList /> },
+        { path: "*", element: <NotFound /> },
+      ],
     },
     {
-      path: '/', element: <AuthLayout />, children: [
-        {path: 'login', element:<Login/>},
-        {path: 'register', element:<Register/>},
-      ]
-    }
-  ])
+      path: "/",
+      element: <AuthLayout />,
+      children: [
+        { path: "login", element: <Login /> },
+        { path: "register", element: <Register /> },
+      ],
+    },
+  ]);
 
 
   return (

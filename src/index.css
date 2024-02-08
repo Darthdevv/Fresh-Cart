@@ -83,3 +83,11 @@ a , a:hover{
 .btn-accent:hover {
     background-color: #39d039;
 }
+
+.title{
+    color: #121212;
+}
+
+.sub-title{
+    color: #767575;
+}
