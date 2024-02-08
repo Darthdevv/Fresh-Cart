@@ -14,22 +14,22 @@ function Navbar() {
           <div className="">
             <ul className="menu menu-horizontal px-1 text-base">
               <li>
-                <NavLink to={"/products"}>Products</NavLink>
+                <NavLink className={'sub-title'} to={"/products"}>Products</NavLink>
               </li>
               <li>
-                <NavLink to={"/categories"}>Categories</NavLink>
+                <NavLink className={'sub-title'} to={"/categories"}>Categories</NavLink>
               </li>
               <li>
-                <NavLink to={"/brands"}>Brands</NavLink>
+                <NavLink className={'sub-title'} to={"/brands"}>Brands</NavLink>
               </li>
               <li>
-                <NavLink to={"/home"}>Home</NavLink>
+                <NavLink className={'sub-title'} to={"/home"}>Home</NavLink>
               </li>
             </ul>
           </div>
         </div>
         <div>
-          <Link to={'/wishlist'} className="dropdown dropdown-end">
+          <Link to={'/wishlist'} className="dropdown dropdown-end sub-title">
             <div
               tabIndex={0}
               role="button"
@@ -58,7 +58,7 @@ function Navbar() {
               </div>
             </div>
           </Link>
-          <Link to={'/cart'} className="dropdown dropdown-end">
+          <Link to={'/cart'} className="dropdown dropdown-end sub-title">
             <div
               tabIndex={0}
               role="button"
@@ -102,7 +102,7 @@ function Navbar() {
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link>SignOut</Link>
+                <Link className={'sub-title'}>SignOut</Link>
               </li>
             </ul>
           </div>
