@@ -16,6 +16,7 @@
 body{
     font-family: var(--font-family) !important;
     background-color: var(--light-color);
+    overflow-x: hidden;
 }
 .rating-color
 {

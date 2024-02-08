@@ -1,36 +1,62 @@
 import Slider from "react-slick";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function SecondaryCarousel() {
+  const [categories, setCategories] = useState([]);
+
   const settings = {
-    dots: true,
+    // dots: false,
+    // infinite: true,
+    // speed: 500,
+    // slidesToShow: 5,
+    // slidesToScroll: 1,
+    className: "center",
+    centerMode: true,
     infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 7,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    rows: 2,
+    slidesPerRow: 1,
   };
+
+  useEffect(() => {
+    async function getCategories() {
+      let { data } = await axios.get(
+        "https://ecommerce.routemisr.com/api/v1/categories"
+      );
+      setCategories(data.data);
+      console.log(data.data);
+    }
+
+    getCategories();
+  }, []);
+
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-      </Slider>
-    </div>
+    <>
+      <div className="my-5 px-6">
+        <h2 className="title text-start text-lg">Show popular categories</h2>
+        <Slider {...settings}>
+          {categories.map((category) => (
+            <img
+              key={category.id}
+              className="w-full h-[150px] max-sm:h-[80px] flex-shrink-0"
+              src={category.image}
+            />
+          ))}
+        </Slider>
+      </div>
+      <div className="text-start">
+        {categories
+          .map((item) => (
+            <span className="text-black mx-[24px]" key={item.id}>
+              {item.name}
+            </span>
+          ))
+          .splice(0, 8)}
+      </div>
+    </>
   );
 }
 

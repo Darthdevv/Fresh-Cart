@@ -26,23 +26,25 @@ function MainCarousel() {
     autoplaySpeed: 4500,
   };
   return (
-    <Slider {...settings}>
-        <img  src={Img1} alt="sliderImage" />
-        <img  src={Img2} alt="sliderImage" />
-        <img  src={Img3} alt="sliderImage" />
-        <img  src={Img4} alt="sliderImage" />
-        <img  src={Img5} alt="sliderImage" />
-        <img  src={Img6} alt="sliderImage" />
-        <img  src={Img7} alt="sliderImage" />
-        <img  src={Img8} alt="sliderImage" />
-        <img  src={Img9} alt="sliderImage" />
-        <img  src={Img10} alt="sliderImage" />
-        <img  src={Img11} alt="sliderImage" />
-        <img  src={Img12} alt="sliderImage" />
-        <img  src={Img13} alt="sliderImage" />
-        <img  src={Img14} alt="sliderImage" />
-        <img  src={Img15} alt="sliderImage" />
-    </Slider>
+    <div className="px-6">
+      <Slider {...settings}>
+        <img src={Img1} alt="sliderImage" />
+        <img src={Img2} alt="sliderImage" />
+        <img src={Img3} alt="sliderImage" />
+        <img src={Img4} alt="sliderImage" />
+        <img src={Img5} alt="sliderImage" />
+        <img src={Img6} alt="sliderImage" />
+        <img src={Img7} alt="sliderImage" />
+        <img src={Img8} alt="sliderImage" />
+        <img src={Img9} alt="sliderImage" />
+        <img src={Img10} alt="sliderImage" />
+        <img src={Img11} alt="sliderImage" />
+        <img src={Img12} alt="sliderImage" />
+        <img src={Img13} alt="sliderImage" />
+        <img src={Img14} alt="sliderImage" />
+        <img src={Img15} alt="sliderImage" />
+      </Slider>
+    </div>
   );
 }
 
