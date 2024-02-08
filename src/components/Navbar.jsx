@@ -7,7 +7,7 @@ function Navbar() {
       <div className="navbar w-full container mx-auto lg:px-5 flex items-center justify-between bg-[#f0f3f2]">
         <div>
           <div className="">
-            <Link to={"/home"} className="btn btn-ghost text-xl">
+            <Link to={"/"} className="btn btn-ghost text-xl">
               <img src={Logo} alt="FreshCart" />
             </Link>
           </div>
@@ -23,7 +23,7 @@ function Navbar() {
                 <NavLink className={'sub-title'} to={"/brands"}>Brands</NavLink>
               </li>
               <li>
-                <NavLink className={'sub-title'} to={"/home"}>Home</NavLink>
+                <NavLink className={'sub-title'} to={"/"}>Home</NavLink>
               </li>
             </ul>
           </div>
