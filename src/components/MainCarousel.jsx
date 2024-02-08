@@ -15,7 +15,7 @@ import Img13 from '../assets/images/noon13.avif';
 import Img14 from '../assets/images/noon14.avif';
 import Img15 from '../assets/images/noon1.avif';
 
-function Carousel() {
+function MainCarousel() {
   const settings = {
     dots: false,
     infinite: true,
@@ -46,4 +46,4 @@ function Carousel() {
   );
 }
 
-export default Carousel;
+export default MainCarousel;

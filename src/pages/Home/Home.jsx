@@ -1,4 +1,4 @@
-import Carousel from "../../components/Carousel";
+import MainCarousel from "../../components/MainCarousel";
 
 
 function Home() {
@@ -7,7 +7,7 @@ function Home() {
       <div className=" min-h-screen bg-[#fff]">
         <div className=" text-center">
           <div className="max-w-full">
-            <Carousel/>       
+            <MainCarousel/>       
           </div>
         </div>
       </div>
