@@ -30,7 +30,7 @@ function Products() {
                 <img src={product.imageCover} alt="brands" />
                 <p>{ product.description}</p>
                 <span className="title">{product.title}</span>
-                <span className="text-[#0aad0a]"> ${  product.price}</span>
+                <span className="text-[#0aad0a]">Price: ${  product.price}</span>
               </div>
             ))}
           </div>
