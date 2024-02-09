@@ -1,4 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RiErrorWarningLine } from "react-icons/ri";
+import {motion,AnimatePresence} from 'framer-motion'
+import { Offline } from "react-detect-offline";
 import MainLayout from './layouts/MainLayout'
 import AuthLayout from './layouts/AuthLayout'
 import Home from './pages/Home/Home'
@@ -42,9 +45,17 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
+      <Offline>
+        <AnimatePresence>
+          <motion.p initial = {{x: 100, opacity: 0}} animate ={{x: 0,opacity:1}} transition={{duration: 0.3}} className="bg-[#0aad0a] text-[#fff] flex items-center justify-center gap-2 rounded-md fixed py-3 px-6 bottom-8 right-8 ">
+            <RiErrorWarningLine />
+            you are currently offline!
+          </motion.p>
+        </AnimatePresence>
+      </Offline>
     </>
-  )
+  );
 }
 
 export default App
