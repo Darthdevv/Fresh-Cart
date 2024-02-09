@@ -6,8 +6,8 @@ import MainLayout from './layouts/MainLayout'
 import AuthLayout from './layouts/AuthLayout'
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
-import Register from './pages/Register/Register'
-import Login from './pages/Login/Login'
+import Register from './pages/Auth/Register/Register';
+import Login from './pages/Auth/Login/Login';
 import Brands from './pages/Brands/Brands'
 import Categories from './pages/Categories/Categories'
 import Products from './pages/Products/Products'
