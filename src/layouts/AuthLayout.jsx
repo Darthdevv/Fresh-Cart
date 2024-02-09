@@ -1,8 +1,14 @@
-
+import AuthNavbar from "../components/AuthNavbar"
+import Footer from "../components/Footer"
+import { Outlet } from "react-router"
 
 function AuthLayout() {
   return (
-    <div>AuthLayout</div>
+    <>
+      <AuthNavbar />
+      <Outlet />
+      <Footer/>
+    </>
   )
 }
 

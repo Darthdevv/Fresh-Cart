@@ -92,3 +92,27 @@ a , a:hover{
 .sub-title{
     color: #767575;
 }
+
+.input-bordered {
+    border-color: #bdbcbc;
+}
+
+.input {
+    flex-shrink: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+    line-height: 2;
+    line-height: 1.5rem;
+    border-radius: var(--rounded-btn, 0.5rem);
+    border-width: 1px;
+    border-color: #bdbcbc;
+    --tw-bg-opacity: 1;
+    background-color: #fff;
+    outline: none;
+    outline-color: transparent;
+}
