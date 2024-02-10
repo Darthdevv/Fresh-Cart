@@ -7,14 +7,13 @@ const phoneRules =
 
 
 
-export const basicSchema = Yup.object().shape({
+export const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .max(20, "name should not exceed 20 characters")
+    .required("name is required *"),
   email: Yup.string()
     .email("Please enter a valid email")
     .required("email is required *"),
-  age: Yup.number()
-    .positive("age must be a positive number")
-    .integer()
-    .required("age is required *"),
   password: Yup.string()
     .min(8)
     .matches(passwordRules, { message: "please create a stronger password" })
@@ -22,6 +21,5 @@ export const basicSchema = Yup.object().shape({
   rePassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("please confirm your password *"),
-  phone: Yup.string()
-    .matches(phoneRules, "Phone number is not valid")
+  phone: Yup.string().matches(phoneRules, "Phone number is not valid"),
 });
