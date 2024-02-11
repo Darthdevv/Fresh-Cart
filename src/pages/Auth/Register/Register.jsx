@@ -1,17 +1,13 @@
+import { useEffect, useState } from "react";
 import { validationSchema } from "../Schemas"
 import {useFormik} from 'formik'
-
-
-async function onSubmit(values, actions) {
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-}
+import axios from "axios";
 
 function Register() {
 
-  const { handleBlur,handleChange,handleSubmit,touched, values, errors ,dirty, isValid } = useFormik({
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const { handleBlur, handleChange, handleSubmit, touched, values, errors, dirty, isValid } = useFormik({
     initialValues: {
       name: "",
       email: "",
@@ -20,15 +16,36 @@ function Register() {
       phone: ""
     },
     validationSchema,
-    onSubmit,
+    onSubmit: (values, actions) => {
+      console.log(values);
+      console.log(actions);
+      sendDataToApi(values);
+      actions.resetForm();
+    }
   });
 
+    async function sendDataToApi(values) {
+      try {
+        let { data } = await axios.post(
+          "https://ecommerce.routemisr.com/api/v1/auth/signup",
+          values
+        );
+        console.log(data);
+      } catch (error) {
+        setErrorMessage(error.response.data.message);
+      }
+    }
+
+  useEffect(() => {
+    () => sendDataToApi(values)
+  }, [values])
+  
   return (
     <>
       <div className=" min-h-screen flex items-center justify-center bg-[#fff]">
         <div className="hero-content flex-col w-full">
           <div className="card shrink-0 w-full max-w-[800px]">
-            <form  onSubmit={handleSubmit} className="card-body w-full">
+            <form onSubmit={handleSubmit} className="card-body w-full">
               <h1 className="title text-2xl">Register Now :</h1>
               <div className="form-control">
                 <label htmlFor="name" className="label">
@@ -79,7 +96,9 @@ function Register() {
                   type="password"
                   id="password"
                   name="password"
-                  className={errors.password && touched.password ? "input-error" : ""}
+                  className={
+                    errors.password && touched.password ? "input-error" : ""
+                  }
                 />
                 {errors.password && touched.password ? (
                   <p className="error">{errors.password}</p>
@@ -98,7 +117,9 @@ function Register() {
                   type="password"
                   id="rePassword"
                   name="rePassword"
-                  className={errors.rePassword && touched.rePassword ? "input-error" : ""}
+                  className={
+                    errors.rePassword && touched.rePassword ? "input-error" : ""
+                  }
                 />
                 {errors.rePassword && touched.rePassword ? (
                   <p className="error">{errors.rePassword}</p>
@@ -124,10 +145,11 @@ function Register() {
                 ) : (
                   ""
                 )}
+                {errorMessage? <p className="error">{errorMessage}</p> : ''}
               </div>
               <div className="self-end mt-4">
                 <button
-                  disabled={(!isValid && dirty)}
+                  disabled={!(isValid && dirty)}
                   type="submit"
                   className="btn btn-accent"
                 >
