@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { validationSchema } from "../Schemas"
+import { registerSchema } from "../Schemas"
 import {useFormik} from 'formik'
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from "react-router";
 
 function Register() {
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { handleBlur, handleChange, handleSubmit, touched, values, errors, dirty, isValid } = useFormik({
     initialValues: {
@@ -15,7 +20,7 @@ function Register() {
       rePassword: "",
       phone: ""
     },
-    validationSchema,
+    validationSchema: registerSchema,
     onSubmit: (values, actions) => {
       console.log(values);
       console.log(actions);
@@ -24,14 +29,19 @@ function Register() {
     }
   });
 
-    async function sendDataToApi(values) {
+  async function sendDataToApi(values) {
+    setLoading(true);
       try {
         let { data } = await axios.post(
           "https://ecommerce.routemisr.com/api/v1/auth/signup",
           values
         );
         console.log(data);
+        if (data.message == 'success') {
+          navigate("/login");
+        } 
       } catch (error) {
+        setLoading(false);
         setErrorMessage(error.response.data.message);
       }
     }
@@ -145,7 +155,7 @@ function Register() {
                 ) : (
                   ""
                 )}
-                {errorMessage? <p className="error">{errorMessage}</p> : ''}
+                {errorMessage ? <p className="error">{errorMessage}</p> : ""}
               </div>
               <div className="self-end mt-4">
                 <button
@@ -153,7 +163,11 @@ function Register() {
                   type="submit"
                   className="btn btn-accent"
                 >
-                  register
+                  {loading ? (
+                    <FontAwesomeIcon icon={faSpinner} spinPulse />
+                  ) : (
+                    "register"
+                  )}
                 </button>
               </div>
             </form>
