@@ -11,7 +11,7 @@ async function onSubmit(values, actions) {
 
 function Register() {
 
-  const { handleBlur,handleChange,handleSubmit,isSubmitting,touched, values, errors } = useFormik({
+  const { handleBlur,handleChange,handleSubmit,touched, values, errors ,dirty, isValid } = useFormik({
     initialValues: {
       name: "",
       email: "",
@@ -28,7 +28,7 @@ function Register() {
       <div className=" min-h-screen flex items-center justify-center bg-[#fff]">
         <div className="hero-content flex-col w-full">
           <div className="card shrink-0 w-full max-w-[800px]">
-            <form onSubmit={handleSubmit} className="card-body w-full">
+            <form  onSubmit={handleSubmit} className="card-body w-full">
               <h1 className="title text-2xl">Register Now :</h1>
               <div className="form-control">
                 <label htmlFor="name" className="label">
@@ -40,6 +40,7 @@ function Register() {
                   value={values.name}
                   type="text"
                   id="name"
+                  name="name"
                   className={errors.name && touched.name ? "input-error" : ""}
                 />
                 {errors.name && touched.name ? (
@@ -58,6 +59,7 @@ function Register() {
                   value={values.email}
                   type="email"
                   id="email"
+                  name="email"
                   className={errors.email && touched.email ? "input-error" : ""}
                 />
                 {errors.email && touched.email ? (
@@ -76,6 +78,7 @@ function Register() {
                   value={values.password}
                   type="password"
                   id="password"
+                  name="password"
                   className={errors.password && touched.password ? "input-error" : ""}
                 />
                 {errors.password && touched.password ? (
@@ -94,6 +97,7 @@ function Register() {
                   value={values.rePassword}
                   type="password"
                   id="rePassword"
+                  name="rePassword"
                   className={errors.rePassword && touched.rePassword ? "input-error" : ""}
                 />
                 {errors.rePassword && touched.rePassword ? (
@@ -112,6 +116,7 @@ function Register() {
                   value={values.phone}
                   type="tel"
                   id="phone"
+                  name="phone"
                   className={errors.phone && touched.phone ? "input-error" : ""}
                 />
                 {errors.phone && touched.phone ? (
@@ -122,7 +127,7 @@ function Register() {
               </div>
               <div className="self-end mt-4">
                 <button
-                  disabled={isSubmitting}
+                  disabled={(!isValid && dirty)}
                   type="submit"
                   className="btn btn-accent"
                 >

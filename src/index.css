@@ -154,6 +154,8 @@ select.input-error{
     border-color: #fc8181;
 }
 
-button:disabled{
-    opacity: 0.5;
+.btn[disabled], .btn:disabled {
+    background-color: #0aad0a;
+    opacity: 0.6;
+    color: #eeeeee9b;
 }
