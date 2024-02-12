@@ -35,13 +35,13 @@ a , a:hover{
     box-shadow: var(--shadow);
     border: solid 1px var(--main-color);
 }
-.product .btn 
+.product .btn-accent 
 {
     transition: transform 1s , opacity 1s;
     transform: translateY(100%);
     opacity: 0;
 }
-.product:hover .btn 
+.product:hover .btn-accent 
 {
     opacity: 1;
     transform: translateY(0%);
