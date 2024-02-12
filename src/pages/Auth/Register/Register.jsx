@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { registerSchema } from "../Schemas"
 import {useFormik} from 'formik'
 import axios from "axios";
@@ -45,10 +45,6 @@ function Register() {
         setErrorMessage(error.response.data.message);
       }
     }
-
-  useEffect(() => {
-    () => sendDataToApi(values)
-  }, [values])
   
   return (
     <>

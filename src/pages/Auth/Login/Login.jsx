@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { loginSchema } from "../Schemas";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -50,10 +50,6 @@ function Login() {
       setErrorMessage(error.response.data.message);
     }
   }
-
-  useEffect(() => {
-    () => sendDataToApi(values);
-  }, [values]);
 
   return (
     <>
