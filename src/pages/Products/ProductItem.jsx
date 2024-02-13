@@ -7,11 +7,10 @@ function ProductItem({ product }) {
   return (
     <>
       <div className="product w-[20%] max-lg:w-[30%] max-md:w-[45%] max-sm:w-[100%] flex flex-col items-start justify-center m-4 p-3 rounded-lg cursor-pointer">
-        <Link to={'/productDetails/' + product.id}>
+        <Link to={"/productDetails/" + product.id}>
           <img
             src={product.imageCover}
-            className=" self-center"
-            width={200}
+            className="w-[100%] self-center max-sm:w-[100%] max-md:w-[100%] max-lg:w-[100%]"
             alt="brands"
           />
           <span className="text-main self-start mt-3">
