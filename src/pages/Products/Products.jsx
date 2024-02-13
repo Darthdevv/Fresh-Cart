@@ -14,23 +14,6 @@ function Products() {
 
   let {data, isLoading } = useQuery('getProducts', getProducts);
   console.log(data?.data.data)
-  // const [products, setProducts] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-
-  //   async function getProducts() {
-  //     let { data } = await axios.get(
-  //       "https://ecommerce.routemisr.com/api/v1/products"
-  //     );
-  //     setLoading(false);
-  //     setProducts(data.data);
-  //     console.log(data.data);
-  //   }
-
-  //     getProducts();
-  // }, [])
-
 
   if (isLoading) return <Loader/>;
   

@@ -12,9 +12,10 @@ import Brands from './pages/Brands/Brands'
 import Categories from './pages/Categories/Categories'
 import Products from './pages/Products/Products'
 import WishList from './pages/WishList/WishList'
-
+import NotFound from "./components/NotFound";
+import ProductDetails from "./pages/Products/ProductDetails";
 import './App.css'
-import NotFound from './components/NotFound'
+
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         { index: true, path: "/", element: <Home /> },
         { path: "cart", element: <Cart /> },
         { path: "products", element: <Products /> },
+        { path: "productDetails/:id", element: <ProductDetails /> },
         { path: "categories", element: <Categories /> },
         { path: "brands", element: <Brands /> },
         { path: "wishlist", element: <WishList /> },
