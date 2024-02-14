@@ -6,11 +6,6 @@ function SecondaryCarousel() {
   const [categories, setCategories] = useState([]);
 
   const settings = {
-    // dots: false,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 5,
-    // slidesToScroll: 1,
     className: "center",
     centerMode: true,
     infinite: true,

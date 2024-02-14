@@ -14,6 +14,7 @@ import Products from './pages/Products/Products'
 import WishList from './pages/WishList/WishList'
 import NotFound from "./components/NotFound/NotFound";
 import ProductDetails from "./pages/Products/ProductDetails";
+import GuardRoute from './guard/GuardRoute';
 import './App.css'
 
 
@@ -24,13 +25,63 @@ function App() {
       path: "/",
       element: <MainLayout />,
       children: [
-        { index: true, path: "/", element: <Home /> },
-        { path: "cart", element: <Cart /> },
-        { path: "products", element: <Products /> },
-        { path: "productDetails/:id", element: <ProductDetails /> },
-        { path: "categories", element: <Categories /> },
-        { path: "brands", element: <Brands /> },
-        { path: "wishlist", element: <WishList /> },
+        {
+          index: true,
+          path: "/",
+          element: (
+            <GuardRoute>
+              <Home />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "cart",
+          element: (
+            <GuardRoute>
+              <Cart />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "products",
+          element: (
+            <GuardRoute>
+              <Products />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "productDetails/:id",
+          element: (
+            <GuardRoute>
+              <ProductDetails />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "categories",
+          element: (
+            <GuardRoute>
+              <Categories />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "brands",
+          element: (
+            <GuardRoute>
+              <Brands />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "wishlist",
+          element: (
+            <GuardRoute>
+              <WishList />
+            </GuardRoute>
+          ),
+        },
         { path: "*", element: <NotFound /> },
       ],
     },
