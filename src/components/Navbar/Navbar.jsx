@@ -1,5 +1,5 @@
 import { Link,NavLink } from 'react-router-dom'
-import Logo from '../assets/images/freshcart-logo.svg'
+import Logo from '../../assets/images/freshcart-logo.svg'
 
 function Navbar() {
   return (

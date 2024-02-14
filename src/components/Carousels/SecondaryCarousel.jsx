@@ -39,18 +39,18 @@ function SecondaryCarousel() {
         <h2 className="title text-start text-lg">Show popular categories</h2>
         <Slider {...settings}>
           {categories.map((category) => (
-            <img
-              key={category.id}
-              className="w-full h-[150px] max-sm:h-[80px] flex-shrink-0"
-              src={category.image}
-            />
+              <img
+                key={category._id}
+                className="w-full h-[150px] max-sm:h-[80px] flex-shrink-0"
+                src={category.image}
+              />
           ))}
         </Slider>
       </div>
       <div className="text-start">
         {categories
           .map((item) => (
-            <span className="text-black mx-[24px]" key={item.id}>
+            <span key={item._id} className="text-black mx-[24px]">
               {item.name}
             </span>
           ))

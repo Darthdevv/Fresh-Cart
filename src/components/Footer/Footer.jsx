@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Apple from "../assets/images/pngwing.com copy 3.png";
-import Google from '../assets/images/pngwing.com copy 2.png'
-import Payment from '../assets/images/pngwing.com copy 4.png'
+import Apple from "../../assets/images/pngwing.com copy 3.png";
+import Google from '../../assets/images/pngwing.com copy 2.png'
+import Payment from '../../assets/images/pngwing.com copy 4.png'
 
 function Footer() {
   return (

@@ -1,5 +1,5 @@
-import MainCarousel from "../../components/MainCarousel";
-import SecondaryCarousel from "../../components/SecondaryCarousel";
+import MainCarousel from "../../components/Carousels/MainCarousel";
+import SecondaryCarousel from "../../components/Carousels/SecondaryCarousel";
 
 function Home() {
   return (

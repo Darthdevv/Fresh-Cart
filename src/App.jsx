@@ -12,7 +12,7 @@ import Brands from './pages/Brands/Brands'
 import Categories from './pages/Categories/Categories'
 import Products from './pages/Products/Products'
 import WishList from './pages/WishList/WishList'
-import NotFound from "./components/NotFound";
+import NotFound from "./components/NotFound/NotFound";
 import ProductDetails from "./pages/Products/ProductDetails";
 import './App.css'
 

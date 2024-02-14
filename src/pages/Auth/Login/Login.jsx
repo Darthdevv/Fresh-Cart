@@ -43,6 +43,7 @@ function Login() {
       );
       console.log(data);
       if (data.message == "success") {
+        localStorage.setItem('token', data.token)
         navigate("/");
       }
     } catch (error) {

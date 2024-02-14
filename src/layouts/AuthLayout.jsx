@@ -1,5 +1,5 @@
-import AuthNavbar from "../components/AuthNavbar"
-import Footer from "../components/Footer"
+import AuthNavbar from "../components/Navbar/AuthNavbar"
+import Footer from "../components/Footer/Footer"
 import { Outlet } from "react-router"
 
 function AuthLayout() {
