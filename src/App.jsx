@@ -15,6 +15,7 @@ import WishList from './pages/WishList/WishList'
 import NotFound from "./components/NotFound/NotFound";
 import ProductDetails from "./pages/Products/ProductDetails";
 import GuardRoute from './guard/GuardRoute';
+  import { ToastContainer} from "react-toastify";
 import './App.css'
 import StoreContextProvider from './context/storeContext';
 
@@ -102,6 +103,7 @@ function App() {
       <StoreContextProvider>
         <RouterProvider router={router} />
       </StoreContextProvider>
+      <ToastContainer theme='colored' autoClose={1000 } />
       <Offline>
         <AnimatePresence>
           <motion.p initial = {{x: 100, opacity: 0}} animate ={{x: 0,opacity:1}} transition={{duration: 0.3}} className="bg-[#0aad0a] text-[#fff] flex items-center justify-center gap-2 rounded-md fixed py-3 px-6 bottom-8 right-8 ">

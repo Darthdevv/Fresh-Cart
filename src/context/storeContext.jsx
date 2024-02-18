@@ -12,6 +12,7 @@ async function addToCart(productId) {
     }
   })
   console.log(data)
+  return data;
 }
 
 // eslint-disable-next-line react/prop-types
