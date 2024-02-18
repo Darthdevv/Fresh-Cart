@@ -11,15 +11,23 @@ async function addToCart(productId) {
       token: localStorage.getItem('token')
     }
   })
-  console.log(data)
   return data;
 }
+
+  async function getCart() {
+    const { data } = await axios.get(baseUrl + "/api/v1/cart", {
+      headers: {
+        token: localStorage.getItem("token"),
+      },
+    });
+    return data;
+  }
 
 // eslint-disable-next-line react/prop-types
 export default function StoreContextProvider({ children }) {
   const [counter, setCounter] = useState(0)
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart }}>
       {children}
     </StoreContext.Provider>
   )
