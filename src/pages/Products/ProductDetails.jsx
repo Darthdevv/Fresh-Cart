@@ -5,10 +5,12 @@ import { baseUrl } from "../../api/api";
 import Loader from "../../components/Loader/Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { StoreContext } from "../../context/storeContext";
 
 
 function ProductDetails() {
-
+  const {counter,setCounter} = useContext(StoreContext)
   const productDetail = useParams();
   console.log(productDetail.id);
 
@@ -44,7 +46,7 @@ function ProductDetails() {
                     {data.data.data.ratingsAverage}
                   </div>
                 </div>
-              <button className="btn-accent w-full rounded-md p-2"> Add to Cart</button>
+              <button onClick={()=> setCounter(counter + 1)} className="btn-accent w-full rounded-md p-2"> Add to Cart</button>
             </div>
           </div>
         </div>

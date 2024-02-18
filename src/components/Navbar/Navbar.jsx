@@ -1,7 +1,10 @@
 import { Link,NavLink } from 'react-router-dom'
 import Logo from '../../assets/images/freshcart-logo.svg'
+import { useContext } from 'react';
+import { StoreContext } from '../../context/storeContext';
 
 function Navbar() {
+  const { counter} = useContext(StoreContext);
   return (
     <>
       <div className="navbar w-full container mx-auto lg:px-5 flex items-center justify-between bg-[#f0f3f2]">
@@ -80,7 +83,7 @@ function Navbar() {
                   />
                 </svg>
                 <span className="badge bg-[#0aad0a] text-[#f0f3f2] border-0 badge-sm indicator-item">
-                  8
+                  {counter}
                 </span>
               </div>
             </div>
@@ -89,7 +92,7 @@ function Navbar() {
               className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-[#f0f3f2] shadow"
             >
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
+                <span className="font-bold text-lg">{counter} Items</span>
                 <span className="text-[#0aad0a] font-semibold">Subtotal: $999</span>
                 <div className="card-actions">
                   <button className="btn btn-accent btn-block">

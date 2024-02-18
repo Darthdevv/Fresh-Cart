@@ -2,8 +2,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { StoreContext } from "../../context/storeContext";
+
 
 function ProductItem({ product }) {
+  const {counter,setCounter} = useContext(StoreContext)
   return (
     <>
       <div className="product w-[20%] max-lg:w-[30%] max-md:w-[45%] max-sm:w-[100%] flex flex-col items-start justify-center m-4 p-3 rounded-lg cursor-pointer">
@@ -27,7 +31,7 @@ function ProductItem({ product }) {
             </div>
           </div>
         </Link>
-        <button className="btn-accent rounded-md p-2 w-full font-bold flex-shrink-0 text-[#fff] bg-main">
+        <button onClick={()=>setCounter(counter + 1)} className="btn-accent rounded-md p-2 w-full font-bold flex-shrink-0 text-[#fff] bg-main">
           Add to Cart
         </button>
       </div>
