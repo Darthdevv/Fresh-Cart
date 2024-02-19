@@ -4,15 +4,17 @@ import { useContext, useEffect } from 'react';
 import { StoreContext } from '../../context/storeContext';
 
 function Navbar() {
-  const { counter, setCounter, getCart } = useContext(StoreContext);
-  
+  const { counter, setCounter, getCart, total, setTotal } = useContext(StoreContext);
+
+ 
   useEffect(() => {
     (async () => {
       const  data  = await getCart()
       console.log(data)
       setCounter(data.numOfCartItems);
+      setTotal(data.data.totalCartPrice);
     })()
-  }, [getCart, setCounter])
+  }, [getCart, setCounter, setTotal])
   
   return (
     <>
@@ -26,22 +28,30 @@ function Navbar() {
           <div className="">
             <ul className="menu menu-horizontal px-1 text-base">
               <li>
-                <NavLink className={'sub-title'} to={"/products"}>Products</NavLink>
+                <NavLink className={"sub-title"} to={"/products"}>
+                  Products
+                </NavLink>
               </li>
               <li>
-                <NavLink className={'sub-title'} to={"/categories"}>Categories</NavLink>
+                <NavLink className={"sub-title"} to={"/categories"}>
+                  Categories
+                </NavLink>
               </li>
               <li>
-                <NavLink className={'sub-title'} to={"/brands"}>Brands</NavLink>
+                <NavLink className={"sub-title"} to={"/brands"}>
+                  Brands
+                </NavLink>
               </li>
               <li>
-                <NavLink className={'sub-title'} to={"/"}>Home</NavLink>
+                <NavLink className={"sub-title"} to={"/"}>
+                  Home
+                </NavLink>
               </li>
             </ul>
           </div>
         </div>
         <div>
-          <Link to={'/wishlist'} className="dropdown dropdown-end sub-title">
+          <Link to={"/wishlist"} className="dropdown dropdown-end sub-title">
             <div
               tabIndex={0}
               role="button"
@@ -70,7 +80,7 @@ function Navbar() {
               </div>
             </div>
           </Link>
-          <Link to={'/cart'} className="dropdown dropdown-end sub-title">
+          <div className="dropdown dropdown-end sub-title">
             <div
               tabIndex={0}
               role="button"
@@ -91,30 +101,34 @@ function Navbar() {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                {counter ?   <span className="badge bg-[#0aad0a] text-[#f0f3f2] border-0 badge-sm indicator-item">
+                {counter ? (
+                  <span className="badge bg-[#0aad0a] text-[#f0f3f2] border-0 badge-sm indicator-item">
                     {counter}
-                  </span> : ''}
+                  </span>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div
               tabIndex={0}
-              className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-[#f0f3f2] shadow"
+              className={`mt-3 z-[1] card card-compact dropdown-content w-52 bg-[#f0f3f2] shadow`}
             >
               <div className="card-body">
                 <span className="font-bold text-lg">{counter} Items</span>
-                <span className="text-[#0aad0a] font-semibold">Subtotal: $999</span>
-                <div className="card-actions">
-                  <button className="btn btn-accent btn-block">
-                    View cart
-                  </button>
-                </div>
+                <span className="text-[#0aad0a] font-semibold">
+                  Total Price: {total}
+                </span>
+                <Link to={"/cart"}>
+                  <button className='btn btn-accent btn-block'>View Cart</button>
+                </Link>
               </div>
             </div>
-          </Link>
+          </div>
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <Link className={'sub-title'}>SignOut</Link>
+                <Link className={"sub-title"}>SignOut</Link>
               </li>
             </ul>
           </div>

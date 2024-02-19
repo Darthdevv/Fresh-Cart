@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { StoreContext } from "../../context/storeContext";
+import Loader from "../../components/Loader/Loader";
 
 function Cart() {
   const [cartData, setCartData] = useState([]);
 
-  const { getCart} = useContext(StoreContext)
-
+  const { getCart } = useContext(StoreContext);
+    const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -14,8 +15,11 @@ function Cart() {
       const data = await getCart();
       setCartData(data)
       console.log(data)
+      setLoading(false)
     })()
   }, [getCart]);
+
+  if(loading) return <Loader/>
 
   return (
     <>
@@ -49,7 +53,7 @@ function Cart() {
                   <button className="title rounded-md py-[2.5px] px-2 border border-[#0aad0a]">
                     +
                   </button>
-                  <span className="title">0</span>
+                  <span className="title">{cartItem?.count }</span>
                   <button className="title rounded-md py-[2.5px] px-2 border border-[#0aad0a]">
                     -
                   </button>

@@ -26,8 +26,9 @@ async function addToCart(productId) {
 // eslint-disable-next-line react/prop-types
 export default function StoreContextProvider({ children }) {
   const [counter, setCounter] = useState(0)
+  const [total, setTotal] = useState(0)
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal }}>
       {children}
     </StoreContext.Provider>
   )

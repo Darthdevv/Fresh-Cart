@@ -159,3 +159,11 @@ select.input-error{
     opacity: 0.6;
     color: #eeeeee9b;
 }
+
+.show {
+  display: block; /* Initially visible */
+}
+
+.show.hidden {
+  display: none; /* Hide the item */
+}
