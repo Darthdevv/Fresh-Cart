@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 function ProductItem({ product }) {
   const { setCounter, addToCart, setTotal } = useContext(StoreContext)
   const [loading, setLoading] = useState(false);
-  
+
   async function addProductToCart(productId) {
     setLoading(true);
     const data = await addToCart(productId);

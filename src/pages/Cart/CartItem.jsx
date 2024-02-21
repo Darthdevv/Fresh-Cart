@@ -9,24 +9,34 @@ import { toast } from "react-toastify";
 
 function CartItem({cartItem, setCartData}) {
 
-  const { removeFromCart, setCounter, setTotal } = useContext(StoreContext);
+  const { removeFromCart, updateProductQuantity, setCounter, setTotal } = useContext(StoreContext);
   const [spinner, setSpinner] = useState(false);
 
     async function deleteCartItem(productId) {
       setSpinner(true);
       const data = await removeFromCart(productId);
       console.log(data);
-      setCartData(data);
-      toast.error("Product removed successfully");
-      setCounter(data.numOfCartItems)
-      setTotal(data.data.totalCartPrice)
-      setSpinner(false);
+      if (data.status === 'success') {
+        setCartData(data);
+        toast.error("Product deleted successfully");
+        setCounter(data.numOfCartItems);
+        setTotal(data.data.totalCartPrice);
+        setSpinner(false);
+      }
     }
 
+  async function updateCartItem(productId,count) {
+    const data = await updateProductQuantity(productId, count);
+    if (data.status === 'success') {
+      toast(`quantity is updated to ${count}`);
+      setCartData(data);
+      setTotal(data.data.totalCartPrice);
+    }
+    console.log(data);
+  }
+
   return (
-    <div
-      className="w-full p-2 flex items-center justify-start gap-8 border-b border-[#dcdada]"
-    >
+    <div className="w-full p-2 flex items-center justify-start gap-8 border-b border-[#dcdada]">
       <img
         className="w-[100px]"
         src={cartItem?.product?.imageCover}
@@ -53,11 +63,21 @@ function CartItem({cartItem, setCartData}) {
         </button>
       </div>
       <div className="ml-auto flex items justify-center gap-2">
-        <button className="title rounded-md py-[2.5px] px-2 border border-[#0aad0a]">
+        <button
+          onClick={() =>
+            updateCartItem(cartItem?.product?._id, cartItem?.count + 1)
+          }
+          className="title rounded-md py-[2.5px] px-2 border border-[#0aad0a]"
+        >
           +
         </button>
         <span className="title">{cartItem?.count}</span>
-        <button className="title rounded-md py-[2.5px] px-2 border border-[#0aad0a]">
+        <button
+          onClick={() =>
+            updateCartItem(cartItem?.product?._id, cartItem?.count - 1)
+          }
+          className="title rounded-md py-[2.5px] px-2 border border-[#0aad0a]"
+        >
           -
         </button>
       </div>

@@ -32,12 +32,21 @@ async function removeFromCart(productId) {
   return data;
 }
 
+async function updateProductQuantity(productId, count) {
+  const { data } = await axios.put(baseUrl + "/api/v1/cart/" + productId,{count}, {
+    headers: {
+      token: localStorage.getItem("token"),
+    },
+  });
+  return data;
+}
+
 // eslint-disable-next-line react/prop-types
 export default function StoreContextProvider({ children }) {
   const [counter, setCounter] = useState(0)
   const [total, setTotal] = useState(0)
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, updateProductQuantity }}>
       {children}
     </StoreContext.Provider>
   )
