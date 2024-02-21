@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 
 function ProductItem({ product }) {
-  const { setCounter, addToCart } = useContext(StoreContext)
+  const { setCounter, addToCart, setTotal } = useContext(StoreContext)
   const [loading, setLoading] = useState(false);
   
   async function addProductToCart(productId) {
@@ -19,6 +19,7 @@ function ProductItem({ product }) {
     if (data.status == 'success') {
       toast.success('Product added successfully');
       setCounter(data.numOfCartItems);
+      setTotal(data.data.totalCartPrice);
       setLoading(false);
     }
   }
