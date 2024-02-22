@@ -65,7 +65,7 @@ function Cart() {
               setCartData={setCartData}
             />
           ))}
-          <Link to={"/address"}>
+          <Link to={`/address/${cartData.data._id}`}>
             <button className="btn btn-accent my-3 text-lg font-semibold">
               Place Order
             </button>

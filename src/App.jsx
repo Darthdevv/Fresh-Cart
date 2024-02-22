@@ -78,7 +78,7 @@ function App() {
           ),
         },
         {
-          path: "address",
+          path: "address/:id",
           element: (
             <GuardRoute>
               <Address/>

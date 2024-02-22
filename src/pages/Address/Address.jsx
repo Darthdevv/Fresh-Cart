@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useFormik } from "formik";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router";
+import { useParams } from "react-router";
+import { StoreContext } from "../../context/storeContext";
 
 function Address() {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const { checkoutSession } = useContext(StoreContext);
+  const { id } = useParams();
 
   const {
     handleBlur,
@@ -35,14 +36,10 @@ function Address() {
   async function sendDataToApi(values) {
     setLoading(true);
     try {
-      let { data } = await axios.post(
-        "https://ecommerce.routemisr.com/api/v1/auth/signin",
-        values
-      );
+      const data  = await checkoutSession(id,values)
       console.log(data);
-      if (data.message == "success") {
-        localStorage.setItem('token', data.token)
-        navigate("/");
+      if (data.status == "success") {
+        window.location.href = data.session.url
       }
     } catch (error) {
       setLoading(false);
@@ -113,7 +110,7 @@ function Address() {
                   {loading ? (
                     <FontAwesomeIcon icon={faSpinner} spinPulse />
                   ) : (
-                    "confirm"
+                    "Pay"
                   )}
                 </button>
               </div>
