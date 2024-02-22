@@ -9,51 +9,37 @@ function Cart() {
   const [cartData, setCartData] = useState(null);
   const { getCart, clearCart, setCounter, setTotal } = useContext(StoreContext);
   const [loading, setLoading] = useState(true);
-  const [empty, setEmpty] = useState(false);
 
 
 
   useEffect(() => {
     (async () => {
-    try {
       const data = await getCart();
-      if (data?.response?.data.statusMsg === 'fail') {
+      if (data?.response?.data.statusMsg == 'fail') {
         setCartData(null);
       } else {
         setCartData(data);
       }
-
       console.log(data);
       setLoading(false);
-      // if (data.numOfCartItems === 0) console.log("cart is empty");
-    } catch (error) {
-      console.log(error)
-    }
     })()
   }, [getCart]);
 
   async function deleteAllItems() {
-    try {
       const data = await clearCart();
       console.log(data)
     if (data?.message === 'success') {
       setCartData(null);
       setCounter(0);
       setTotal(0);
-      setEmpty(true)
-    }
-    } catch (error) {
-      console.log(error)
     }
   }
 
-  if(loading) return <Loader/>
+  if (loading) return <Loader />
+  if (cartData == null) return <EmptyCart />
+  if(cartData.numOfCartItems == 0) return <EmptyCart/>
 
   return (
-    <>
-      {empty ? (
-        <EmptyCart />
-      ) : (
         <div className=" min-h-screen bg-white">
           <div className="hero-content">
             <div className="max-w-full container bg-[#f0f3f2] py-5 px-3">
@@ -61,7 +47,7 @@ function Cart() {
                 <div>
                   <h1 className="text-3xl font-bold title">Shop Cart :</h1>
                   <h4 className="py-2 text-[#0aad0a]">
-                    Total Cart Price: {cartData?.data?.totalCartPrice} EGP
+                    Total Cart Price: {cartData?.data.totalCartPrice} EGP
                   </h4>
                 </div>
                 <button
@@ -81,8 +67,6 @@ function Cart() {
             </div>
           </div>
         </div>
-      )}
-    </>
   );
 }
 

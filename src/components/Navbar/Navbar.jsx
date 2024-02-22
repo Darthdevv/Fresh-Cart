@@ -8,19 +8,10 @@ function Navbar() {
 
   useEffect(() => {
     (async () => {
-      try {
-        const data = await getCart();
-        console.log(data);
-        if (data?.response?.data.statusMsg === "fail") {
-          setCounter(null);
-          setTotal(null);
-        } else {
-        setCounter(data && data?.numOfCartItems);
-        setTotal(data && data?.data?.totalCartPrice);
-        }
-      } catch (error) {
-        console.log(error)
-      }
+      const data = await getCart()
+      console.log(data)
+      setCounter( data?.numOfCartItems);
+      setTotal(data?.data.totalCartPrice);
     })()
   }, [getCart, setCounter, setTotal])
 

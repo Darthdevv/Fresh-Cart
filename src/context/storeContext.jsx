@@ -15,39 +15,35 @@ async function addToCart(productId) {
 }
 
 async function getCart() {
-  const { data } = await axios.get(baseUrl + "/api/v1/cart/", {
+  return await axios.get(baseUrl + "/api/v1/cart/", {
     headers: {
       token: localStorage.getItem("token"),
     },
-  });
-  return data;
+  }).then(({ data }) => data).catch(err => err);
 }
 
 async function clearCart() {
-  const { data } = await axios.delete(baseUrl + "/api/v1/cart/", {
+  return await axios.delete(baseUrl + "/api/v1/cart/", {
     headers: {
       token: localStorage.getItem("token"),
     },
-  });
-  return data;
+  }).then(({data})=>data).catch(err => err);
 }
 
 async function removeFromCart(productId) {
-  const { data } = await axios.delete(baseUrl + '/api/v1/cart/' + productId, {
+  return await axios.delete(baseUrl + '/api/v1/cart/' + productId, {
     headers: {
       token: localStorage.getItem("token"),
     },
-  });
-  return data;
+  }).then(({data})=>data).catch(err => err);
 }
 
 async function updateProductQuantity(productId, count) {
-  const { data } = await axios.put(baseUrl + "/api/v1/cart/" + productId,{count}, {
+  return await axios.put(baseUrl + "/api/v1/cart/" + productId,{count}, {
     headers: {
       token: localStorage.getItem("token"),
     },
-  });
-  return data;
+  }).then(({data})=>data).catch(err => err);
 }
 
 // eslint-disable-next-line react/prop-types
