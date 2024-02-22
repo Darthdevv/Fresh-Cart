@@ -18,6 +18,7 @@ import GuardRoute from './guard/GuardRoute';
   import { ToastContainer} from "react-toastify";
 import './App.css'
 import StoreContextProvider from './context/storeContext';
+import Address from './pages/Address/Address';
 
 
 function App() {
@@ -73,6 +74,14 @@ function App() {
           element: (
             <GuardRoute>
               <Brands />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "address",
+          element: (
+            <GuardRoute>
+              <Address/>
             </GuardRoute>
           ),
         },
