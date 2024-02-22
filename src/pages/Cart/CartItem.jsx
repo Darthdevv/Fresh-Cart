@@ -28,7 +28,7 @@ function CartItem({cartItem, setCartData}) {
   async function updateCartItem(productId,count) {
     const data = await updateProductQuantity(productId, count);
     if (data.status === 'success') {
-      toast(`quantity is updated to ${count}`);
+      toast.success(`quantity is updated to ${count}`);
       setCartData(data);
       setTotal(data.data.totalCartPrice);
     }
@@ -64,6 +64,7 @@ function CartItem({cartItem, setCartData}) {
       </div>
       <div className="ml-auto flex items justify-center gap-2">
         <button
+          disabled={cartItem?.count > cartItem?.product?.quantity}
           onClick={() =>
             updateCartItem(cartItem?.product?._id, cartItem?.count + 1)
           }
@@ -73,6 +74,7 @@ function CartItem({cartItem, setCartData}) {
         </button>
         <span className="title">{cartItem?.count}</span>
         <button
+          disabled={cartItem?.count <= 1}
           onClick={() =>
             updateCartItem(cartItem?.product?._id, cartItem?.count - 1)
           }

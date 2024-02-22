@@ -6,16 +6,24 @@ import { StoreContext } from '../../context/storeContext';
 function Navbar() {
   const { counter, setCounter, getCart, total, setTotal } = useContext(StoreContext);
 
- 
   useEffect(() => {
     (async () => {
-      const  data  = await getCart()
-      console.log(data)
-      setCounter(data.numOfCartItems);
-      setTotal(data.data.totalCartPrice);
+      try {
+        const data = await getCart();
+        console.log(data);
+        if (data?.response?.data.statusMsg === "fail") {
+          setCounter(null);
+          setTotal(null);
+        } else {
+        setCounter(data && data?.numOfCartItems);
+        setTotal(data && data?.data?.totalCartPrice);
+        }
+      } catch (error) {
+        console.log(error)
+      }
     })()
   }, [getCart, setCounter, setTotal])
-  
+
   return (
     <>
       <div className="navbar w-full container mx-auto lg:px-5 flex items-center justify-between bg-[#f0f3f2]">
