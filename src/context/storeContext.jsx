@@ -6,12 +6,11 @@ import { baseUrl } from "../api/api";
 export const StoreContext = createContext(0);
 
 async function addToCart(productId) {
-  const { data } = await axios.post(baseUrl + '/api/v1/cart/', { productId }, {
+  return await axios.post(baseUrl + '/api/v1/cart/', { productId }, {
     headers: {
       token: localStorage.getItem('token')
     }
-  })
-  return data;
+  }).then(({data})=>data).catch(err => err);
 }
 
 async function getCart() {
@@ -19,7 +18,10 @@ async function getCart() {
     headers: {
       token: localStorage.getItem("token"),
     },
-  }).then(({ data }) => data).catch(err => err);
+  }).then(({ data }) => {
+    localStorage.setItem('ownerId',data.data.cartOwner)
+      return data
+  }).catch(err => err);
 }
 
 async function clearCart() {

@@ -11,7 +11,7 @@ function Navbar() {
       const data = await getCart()
       console.log(data)
       setCounter( data?.numOfCartItems);
-      setTotal(data?.data.totalCartPrice);
+      setTotal( data?.data?.totalCartPrice);
     })()
   }, [getCart, setCounter, setTotal])
 

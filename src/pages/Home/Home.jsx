@@ -1,5 +1,6 @@
 import MainCarousel from "../../components/Carousels/MainCarousel";
 import SecondaryCarousel from "../../components/Carousels/SecondaryCarousel";
+import Products from "../Products/Products";
 
 function Home() {
   return (
@@ -8,7 +9,8 @@ function Home() {
         <div className=" text-center">
           <div className="max-w-full py-5">
             <MainCarousel />
-            <SecondaryCarousel/>
+            <SecondaryCarousel />
+            <Products/>
           </div>
         </div>
       </div>

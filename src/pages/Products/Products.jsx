@@ -16,13 +16,13 @@ function Products() {
   console.log(data?.data.data)
 
   if (isLoading) return <Loader/>;
-  
+
   return (
     <>
       <div className=" min-h-screen bg-[#fff]">
         <div>
           <div className="max-w-full flex items-center justify-center flex-wrap py-5">
-            {data?.data.data.map((product) => (
+            {data?.data?.data?.map((product) => (
               <ProductItem key={product.id} product={product}/>
             ))}
           </div>
