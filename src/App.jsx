@@ -19,6 +19,7 @@ import GuardRoute from './guard/GuardRoute';
 import './App.css'
 import StoreContextProvider from './context/storeContext';
 import Address from './pages/Address/Address';
+import AllOrders from './pages/Orders/AllOrders';
 
 
 function App() {
@@ -81,7 +82,7 @@ function App() {
           path: "address/:id",
           element: (
             <GuardRoute>
-              <Address/>
+              <Address />
             </GuardRoute>
           ),
         },
@@ -90,6 +91,14 @@ function App() {
           element: (
             <GuardRoute>
               <WishList />
+            </GuardRoute>
+          ),
+        },
+        {
+          path: "allorders",
+          element: (
+            <GuardRoute>
+              <AllOrders/>
             </GuardRoute>
           ),
         },

@@ -42,8 +42,8 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink className={"sub-title"} to={"/"}>
-                  Home
+                <NavLink className={"sub-title"} to={"/allorders"}>
+                  Orders
                 </NavLink>
               </li>
             </ul>
