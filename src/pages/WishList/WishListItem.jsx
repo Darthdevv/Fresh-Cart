@@ -7,7 +7,7 @@ import { StoreContext } from "../../context/storeContext";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
-function WishListItem({ item, setWishlistData }) {
+function WishListItem({ item, setWishlistData}) {
 
   const [spinner, setSpinner] = useState(false);
   const { removeFromWishlist } = useContext(StoreContext);
@@ -18,6 +18,7 @@ function WishListItem({ item, setWishlistData }) {
     const data = await removeFromWishlist(productId);
     console.log(data);
     if (data.status === "success") {
+      window.location.reload();
       setWishlistData(data);
       toast.error("Product removed from wishlist");
       setSpinner(false);

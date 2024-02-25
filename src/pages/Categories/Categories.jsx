@@ -1,32 +1,32 @@
 import axios from "axios"
-import { useState,useEffect } from "react"
+import { baseUrl } from "../../api/api";
+import { useQuery } from "react-query";
+import Loader from "../../components/Loader/Loader";
+
 
 function Categories() {
 
-  const [categories, setCategories] = useState([]);
-  
-  useEffect(() => {
-    async function getCategories() {
-      let { data } = await axios.get(
-        "https://ecommerce.routemisr.com/api/v1/categories"
-      );
-      setCategories(data.data);
-      console.log(data.data);
+
+    function getCategories() {
+      return axios.get(baseUrl + "/api/v1/categories");
     }
-    getCategories();
-  },[])
+
+    let { data, isLoading } = useQuery("getCategories", getCategories);
+    console.log(data?.data.data);
+
+    if (isLoading) return <Loader />;
   return (
     <>
       <div className=" min-h-screen bg-[#fff]">
         <div className=" text-center">
           <div className="max-w-full flex items-center justify-center flex-wrap py-5">
-            {categories.map((category) => (
+            {data?.data.data.map((category) => (
               <div
-                className="w-[29%] max-md:w-[50%] max-sm:w-[100%] grid place-items-center"
+                className="w-[29%] max-md:w-[50%] max-sm:w-[100%] grid place-items-center border border-[#f0f3f2] rounded product m-2 shadow-md cursor-pointer"
                 key={category.id}
               >
-                <img src={category.image} alt="brands" />
-                <span>{category.name}</span>
+                <img className="w-[200px] h-[300px] mb-2" src={category.image} alt="categories" />
+                <div className=" w-full p-2 title border border-[#f0f3f2]">{category.name}</div>
               </div>
             ))}
           </div>
