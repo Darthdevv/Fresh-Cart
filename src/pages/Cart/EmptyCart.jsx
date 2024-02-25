@@ -17,11 +17,11 @@ function EmptyCart() {
               alt="empty cart"
             />
           </AnimatePresence>
-          <h1 className="absolute top-[77%] left-[40%] text-3xl font-bold text-main">
+          <h1 className="absolute max-lg:top-[80%] max-lg:left-[37%] max-lg:text-3xl max-md:top-[80%] max-md:left-[34%] max-md:text-3xl max-sm:top-[45%] max-sm:left-[22%] max-sm:text-2xl text-pretty top-[77%] left-[40%] text-3xl font-bold text-main">
             Your cart is Empty
           </h1>
           <Link to={"/products"}>
-            <button className="absolute top-[85%] left-[44%] btn btn-accent">
+            <button className="absolute max-lg:top-[90%] max-lg:left-[42%] max-md:top-[90%] max-md:left-[40%] max-sm:top-[55%] max-sm:left-[29%] text-pretty top-[85%] left-[44%] btn btn-accent">
               Continue Shopping
             </button>
           </Link>
