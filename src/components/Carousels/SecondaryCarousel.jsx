@@ -31,21 +31,24 @@ function SecondaryCarousel() {
   return (
     <>
       <div className="my-5 px-6">
-        <h2 className="title text-start text-lg">Show popular categories</h2>
+        <h2 className="title text-start text-lg mb-2">Show popular categories</h2>
         <Slider {...settings}>
           {categories.map((category) => (
-              <img
-                key={category._id}
-                className="w-full h-[150px] max-sm:h-[80px] flex-shrink-0"
-                src={category.image}
-              />
+            <img
+              key={category._id}
+              className="w-full h-[150px] max-sm:h-[80px] flex-shrink-0"
+              src={category.image}
+            />
           ))}
         </Slider>
       </div>
-      <div className="text-start">
+      <div className="max-sm:px-6 max-md:px-4 max-lg:px-10 text-start">
         {categories
           .map((item) => (
-            <span key={item._id} className="text-black mx-[24px]">
+            <span
+              key={item._id}
+              className=" text-black mx-[24px]  max-sm:mx-[4px] max-sm:text-xs"
+            >
               {item.name}
             </span>
           ))

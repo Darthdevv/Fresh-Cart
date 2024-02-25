@@ -37,7 +37,7 @@ function ProductItem({ product }) {
 
   return (
     <>
-      <div className="product relative w-[20%] max-lg:w-[30%] max-md:w-[45%] max-sm:w-[100%] flex flex-col items-start justify-center m-4 p-3 rounded-lg cursor-pointer border border-[#f0f3f2] shadow-md">
+      <div className="product relative w-[20%] max-lg:w-[28%] max-md:w-[45%] max-sm:w-[100%] flex flex-col items-start justify-center m-6 p-3 rounded-lg cursor-pointer border border-[#f0f3f2] shadow-md">
         <div className="absolute right-2 top-2 bg-[#f0f3f2] px-2 py-1 rounded shadow-md">
           <button onClick={()=>addProductToWishlist(product._id)}>
             <FontAwesomeIcon className={beat ? 'text-[#ff0033]': ''} icon={faHeart} />

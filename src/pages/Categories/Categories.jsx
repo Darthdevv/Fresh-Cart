@@ -22,7 +22,7 @@ function Categories() {
           <div className="max-w-full flex items-center justify-center flex-wrap py-5">
             {data?.data.data.map((category) => (
               <div
-                className="w-[29%] max-md:w-[50%] max-sm:w-[100%] grid place-items-center border border-[#f0f3f2] rounded product m-2 shadow-md cursor-pointer"
+                className="w-[23%] max-lg:w-[29%] max-md:w-[45%] max-sm:w-[100%] grid place-items-center border border-[#f0f3f2] rounded product m-2 shadow-md cursor-pointer"
                 key={category.id}
               >
                 <img className="w-[200px] h-[300px] mb-2" src={category.image} alt="categories" />

@@ -17,15 +17,15 @@ function Navbar() {
 
   return (
     <>
-      <div className="navbar w-full container mx-auto lg:px-5 flex items-center justify-between bg-[#f0f3f2]">
+      <div className="navbar w-full mx-auto lg:px-5 flex items-center justify-between bg-[#f0f3f2]">
         <div>
-          <div className="">
+          <div>
             <Link to={"/"} className="btn btn-ghost text-xl">
               <img src={Logo} alt="FreshCart" />
             </Link>
           </div>
-          <div className="">
-            <ul className="menu menu-horizontal px-1 text-base">
+          <div>
+            <ul className="menu menu-horizontal max-md:hidden px-1 text-base">
               <li>
                 <NavLink className={"sub-title"} to={"/products"}>
                   Products
@@ -119,17 +119,83 @@ function Navbar() {
                   Total Price: {total}
                 </span>
                 <Link to={"/cart"}>
-                  <button className='btn btn-accent btn-block'>View Cart</button>
+                  <button className="btn btn-accent btn-block">
+                    View Cart
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
           <div className="flex-none">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 max-md:hidden text-base">
               <li>
-                <Link className={"sub-title"}>SignOut</Link>
+                <NavLink
+                  to={"/login"}
+                  onClick={() => localStorage.clear()}
+                  className={"sub-title"}
+                >
+                  SignOut
+                </NavLink>
               </li>
             </ul>
+          </div>
+          <div dir="rtl" className="navbar-end text-black hidden max-md:block">
+            <div className="dropdown">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle text-black"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-black"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h7"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#f0f3f2] rounded-box w-52 text-base"
+              >
+                <li>
+                  <NavLink className={"sub-title"} to={"/products"}>
+                    Products
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={"sub-title"} to={"/categories"}>
+                    Categories
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={"sub-title"} to={"/brands"}>
+                    Brands
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={"sub-title"} to={"/allorders"}>
+                    Orders
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={"/login"}
+                    onClick={() => localStorage.clear()}
+                    className={"sub-title"}
+                  >
+                    SignOut
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
