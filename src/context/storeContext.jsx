@@ -13,6 +13,30 @@ async function addToCart(productId) {
   }).then(({data})=>data).catch(err => err);
 }
 
+async function getWishList() {
+  return axios.get(baseUrl + "/api/v1/wishlist/", {
+    headers: {
+      token: localStorage.getItem("token"),
+    },
+  }).then(({ data }) => data).catch(err => err);
+}
+
+async function addToWishlist(productId) {
+  return axios.post(baseUrl + "/api/v1/wishlist/", { productId }, {
+    headers: {
+      token: localStorage.getItem('token'),
+    }
+  }).then(({ data }) => data).catch(err => err);
+}
+
+async function removeFromWishlist(productId) {
+  return axios.delete(baseUrl + "/api/v1/wishlist/" + productId, {
+    headers: {
+      token: localStorage.getItem('token'),
+    }
+  }).then(({ data }) => data).catch(err => err);
+}
+
 async function getCart() {
   return await axios.get(baseUrl + "/api/v1/cart/", {
     headers: {
@@ -61,7 +85,7 @@ export default function StoreContextProvider({ children }) {
   const [counter, setCounter] = useState(0)
   const [total, setTotal] = useState(0)
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, updateProductQuantity, clearCart, checkoutSession }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart,getWishList, addToWishlist,removeFromWishlist, updateProductQuantity, clearCart, checkoutSession }}>
       {children}
     </StoreContext.Provider>
   )

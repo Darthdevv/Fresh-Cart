@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { StoreContext } from "../../context/storeContext";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 
 
 function ProductItem({ product }) {
-  const { setCounter, addToCart, setTotal } = useContext(StoreContext)
+  const { setCounter, addToCart, setTotal, addToWishlist } = useContext(StoreContext)
   const [loading, setLoading] = useState(false);
+  const [beat, setBeat] = useState(false);
 
   async function addProductToCart(productId) {
     setLoading(true);
@@ -24,9 +26,23 @@ function ProductItem({ product }) {
     }
   }
 
+  async function addProductToWishlist(productId) {
+    const data = await addToWishlist(productId);
+    console.log(data)
+    if (data.status == 'success') {
+      setBeat(true);
+      toast.success('Product added to wishlist');
+    }
+  }
+
   return (
     <>
-      <div className="product w-[20%] max-lg:w-[30%] max-md:w-[45%] max-sm:w-[100%] flex flex-col items-start justify-center m-4 p-3 rounded-lg cursor-pointer">
+      <div className="product relative w-[20%] max-lg:w-[30%] max-md:w-[45%] max-sm:w-[100%] flex flex-col items-start justify-center m-4 p-3 rounded-lg cursor-pointer">
+        <div className="absolute right-2 top-2 bg-[#f0f3f2] px-2 py-1 rounded shadow-md">
+          <button onClick={()=>addProductToWishlist(product._id)}>
+            <FontAwesomeIcon className={beat ? 'text-[#fc8181]': ''} icon={faHeart} />
+          </button>
+        </div>
         <Link to={"/productDetails/" + product._id}>
           <img
             src={product.imageCover}
@@ -52,7 +68,11 @@ function ProductItem({ product }) {
           disabled={loading}
           className="btn-accent rounded-md p-2 w-full font-bold flex-shrink-0 text-[#fff] bg-main"
         >
-          {loading ? <FontAwesomeIcon icon={faSpinner} spinPulse /> : "Add to Cart"}
+          {loading ? (
+            <FontAwesomeIcon icon={faSpinner} spinPulse />
+          ) : (
+            "Add to Cart"
+          )}
         </button>
       </div>
     </>

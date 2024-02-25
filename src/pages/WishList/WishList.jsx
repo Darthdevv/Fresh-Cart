@@ -1,23 +1,44 @@
-import axios from "axios"
-import { useQuery } from "react-query"
+import { useContext } from "react";
 import Loader from "../../components/Loader/Loader"
-import { baseUrl } from "../../api/api"
+import WishListItem from "./WishListItem";
+import { StoreContext } from "../../context/storeContext";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function WishList() {
-  function getWishList() {
-    return axios.get(baseUrl + "/api/v1/wishlist", {
-      headers: {
-        token: localStorage.getItem('token'),
-    }});
-  }
+  const { getWishList } = useContext(StoreContext);
+  const [wishlistData, setWishlistData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const { data, isLoading } = useQuery('getWishList', getWishList);
-  console.log(data)
+  useEffect(() => {
+    (async () => {
+      const data = await getWishList();
+      setWishlistData(data);
+      console.log(data);
+      setLoading(false);
+    })();
+  }, [getWishList]);
 
-  if (isLoading) return <Loader />;
+  if (loading) return <Loader />;
+
   return (
-    <div>WishList</div>
-  )
+    <div className=" min-h-screen bg-white">
+      <div className="hero-content">
+        <div className="max-w-full container bg-[#f0f3f2] py-5 px-3">
+          <div className="flex items-center justify-center">
+            <h1>Wishlist</h1>
+          </div>
+          {wishlistData?.data?.map((item,index) => (
+            <WishListItem
+              item={item}
+              setWishlistData={setWishlistData}
+              key={index}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default WishList
