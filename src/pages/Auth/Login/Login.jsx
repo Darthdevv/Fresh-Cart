@@ -27,8 +27,6 @@ function Login() {
     },
     validationSchema: loginSchema,
     onSubmit: (values, actions) => {
-      console.log(values);
-      console.log(actions);
       sendDataToApi(values);
       actions.resetForm();
     },
@@ -41,7 +39,6 @@ function Login() {
         "https://ecommerce.routemisr.com/api/v1/auth/signin",
         values
       );
-      console.log(data);
       if (data.message == "success") {
         localStorage.setItem('token', data.token)
         navigate("/");
@@ -58,7 +55,9 @@ function Login() {
         <div className="hero-content flex-col w-full">
           <div className="card shrink-0 w-full max-w-[800px]">
             <form onSubmit={handleSubmit} className="card-body w-full">
+
               <h1 className="title text-2xl">Login Now :</h1>
+
               <div className="form-control">
                 <label htmlFor="email" className="label">
                   <span className="title">email :</span>
@@ -78,6 +77,7 @@ function Login() {
                   ""
                 )}
               </div>
+
               <div className="form-control">
                 <label htmlFor="password" className="label">
                   <span className="title">password :</span>
@@ -99,7 +99,9 @@ function Login() {
                   ""
                 )}
               </div>
+
               {errorMessage ? <p className="error">{errorMessage}</p> : ""}
+
               <div className="self-end mt-4">
                 <button
                   disabled={!(isValid && dirty)}
@@ -113,6 +115,7 @@ function Login() {
                   )}
                 </button>
               </div>
+              
             </form>
           </div>
         </div>

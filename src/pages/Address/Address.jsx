@@ -26,8 +26,6 @@ function Address() {
       city: "",
     },
     onSubmit: (values, actions) => {
-      console.log(values);
-      console.log(actions);
       sendDataToApi(values);
       actions.resetForm();
     },
@@ -37,7 +35,7 @@ function Address() {
     setLoading(true);
     try {
       const data  = await checkoutSession(id,values)
-      console.log(data);
+
       if (data.status == "success") {
         window.location.href = data.session.url
       }
@@ -52,6 +50,7 @@ function Address() {
         <div className="hero-content flex-col w-full">
           <div className="card shrink-0 w-full max-w-[800px]">
             <form onSubmit={handleSubmit} className="card-body w-full">
+
               <h1 className="title text-2xl">Address :</h1>
 
               <div className="form-control">
@@ -114,6 +113,7 @@ function Address() {
                   )}
                 </button>
               </div>
+              
             </form>
           </div>
         </div>

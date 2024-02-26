@@ -23,7 +23,7 @@ export const registerSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("please confirm your password *"),
   phone: Yup.string().matches(phoneRules, "Phone number is not valid"),
-  
+
 });
 
 export const loginSchema = Yup.object().shape({
@@ -35,5 +35,5 @@ export const loginSchema = Yup.object().shape({
     .min(8)
     .matches(passwordRules, { message: "please create a stronger password" })
     .required("password is required *"),
-  
+
 });

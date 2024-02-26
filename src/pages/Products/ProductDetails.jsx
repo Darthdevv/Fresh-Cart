@@ -12,17 +12,15 @@ import { StoreContext } from "../../context/storeContext";
 function ProductDetails() {
   const {counter,setCounter} = useContext(StoreContext)
   const productDetail = useParams();
-  console.log(productDetail.id);
 
   function getProductDetails() {
     return axios.get(baseUrl + '/api/v1/products/' + productDetail.id)
   }
 
   let { data, isLoading } = useQuery('getProductDetails', getProductDetails);
-  console.log(data?.data.data)
-
 
   if (isLoading) return <Loader />;
+
   return (
     <>
       <div className=" min-h-screen bg-white">

@@ -4,13 +4,13 @@ import { useQuery } from "react-query";
 import Loader from "../../components/Loader/Loader";
 
 function AllOrders() {
+
   function getOrders() {
     const ownerId = localStorage.getItem("ownerId");
     return axios.get(baseUrl + `/api/v1/orders/user/${ownerId}`);
   }
 
   let { data, isLoading } = useQuery("getOrders", getOrders);
-  console.log(data);
 
   if (!data || data == undefined) {
     return <Loader />;
@@ -29,6 +29,7 @@ function AllOrders() {
                 className="w-[48%] bg-[#f0f3f2] m-2 text-[#000]"
               >
                 <div className="flex items-center justify-start">
+
                   {order.cartItems.map((items) => (
                     <div
                       className="border border-gray-300 rounded bg-white flex flex-col items-start justify-start m-2 "
@@ -48,6 +49,7 @@ function AllOrders() {
                       </div>
                     </div>
                   ))}
+
                 </div>
                 <div className="m-2">
                   <h5>Payment Method: {order.paymentMethodType}</h5>

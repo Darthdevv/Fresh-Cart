@@ -22,8 +22,6 @@ function Register() {
     },
     validationSchema: registerSchema,
     onSubmit: (values, actions) => {
-      console.log(values);
-      console.log(actions);
       sendDataToApi(values);
       actions.resetForm();
     }
@@ -36,23 +34,24 @@ function Register() {
           "https://ecommerce.routemisr.com/api/v1/auth/signup",
           values
         );
-        console.log(data);
         if (data.message == 'success') {
           navigate("/login");
-        } 
+        }
       } catch (error) {
         setLoading(false);
         setErrorMessage(error.response.data.message);
       }
     }
-  
+
   return (
     <>
       <div className=" min-h-screen flex items-center justify-center bg-[#fff]">
         <div className="hero-content flex-col w-full">
           <div className="card shrink-0 w-full max-w-[800px]">
             <form onSubmit={handleSubmit} className="card-body w-full">
+
               <h1 className="title text-2xl">Register Now :</h1>
+
               <div className="form-control">
                 <label htmlFor="name" className="label">
                   <span className="title">name :</span>
@@ -72,6 +71,7 @@ function Register() {
                   ""
                 )}
               </div>
+
               <div className="form-control">
                 <label htmlFor="email" className="label">
                   <span className="title">email :</span>
@@ -91,6 +91,7 @@ function Register() {
                   ""
                 )}
               </div>
+
               <div className="form-control">
                 <label htmlFor="password" className="label">
                   <span className="title">password :</span>
@@ -112,6 +113,7 @@ function Register() {
                   ""
                 )}
               </div>
+
               <div className="form-control">
                 <label htmlFor="rePassword" className="label">
                   <span className="title">rePassword :</span>
@@ -133,6 +135,7 @@ function Register() {
                   ""
                 )}
               </div>
+
               <div className="form-control">
                 <label htmlFor="phone" className="label">
                   <span className="title">phone :</span>
@@ -153,6 +156,7 @@ function Register() {
                 )}
                 {errorMessage ? <p className="error">{errorMessage}</p> : ""}
               </div>
+
               <div className="self-end mt-4">
                 <button
                   disabled={!(isValid && dirty)}
@@ -166,6 +170,7 @@ function Register() {
                   )}
                 </button>
               </div>
+              
             </form>
           </div>
         </div>

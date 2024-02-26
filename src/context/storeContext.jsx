@@ -82,10 +82,12 @@ async function checkoutSession(cartId, shippingAddress) {
 
 // eslint-disable-next-line react/prop-types
 export default function StoreContextProvider({ children }) {
+
   const [counter, setCounter] = useState(0)
   const [total, setTotal] = useState(0)
+
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart,getWishList, addToWishlist,removeFromWishlist, updateProductQuantity, clearCart, checkoutSession }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, getWishList, addToWishlist, removeFromWishlist, updateProductQuantity, clearCart, checkoutSession }}>
       {children}
     </StoreContext.Provider>
   )

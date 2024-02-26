@@ -13,7 +13,6 @@ function Products() {
   }
 
   let {data, isLoading } = useQuery('getProducts', getProducts);
-  console.log(data?.data.data)
 
   if (isLoading) return <Loader/>;
 
@@ -22,9 +21,11 @@ function Products() {
       <div className=" min-h-screen bg-[#fff]">
         <div>
           <div className="max-w-full flex items-center justify-center flex-wrap py-5">
+
             {data?.data?.data?.map((product) => (
               <ProductItem key={product.id} product={product}/>
             ))}
+
           </div>
         </div>
       </div>

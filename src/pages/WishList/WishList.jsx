@@ -14,7 +14,6 @@ function WishList() {
     (async () => {
       const data = await getWishList();
       setWishlistData(data);
-      console.log(data);
       setLoading(false);
     })();
   }, [getWishList]);
@@ -28,6 +27,7 @@ function WishList() {
           <div className="flex items-center justify-center">
             <h1>Wishlist</h1>
           </div>
+
           {wishlistData?.data?.map((item,index) => (
             <WishListItem
               item={item}
@@ -35,6 +35,7 @@ function WishList() {
               key={index}
             />
           ))}
+
         </div>
       </div>
     </div>

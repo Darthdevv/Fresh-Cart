@@ -9,7 +9,6 @@ function Navbar() {
   useEffect(() => {
     (async () => {
       const data = await getCart()
-      console.log(data)
       setCounter( data?.numOfCartItems);
       setTotal( data?.data?.totalCartPrice);
     })()

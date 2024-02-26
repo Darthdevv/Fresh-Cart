@@ -10,9 +10,9 @@ function GuardRoute({ children }) {
     const decoded = jwtDecode(token);
     if (decoded.role != 'user') {
       localStorage.clear();
-      return <Navigate to={"/login"} />; 
+      return <Navigate to={"/login"} />;
     }
-    console.log(decoded)
+
     if (token) return children;
   } catch (error) {
     localStorage.clear();

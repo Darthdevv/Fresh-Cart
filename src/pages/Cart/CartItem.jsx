@@ -15,7 +15,7 @@ function CartItem({cartItem, setCartData}) {
     async function deleteCartItem(productId) {
       setSpinner(true);
       const data = await removeFromCart(productId);
-      console.log(data);
+
       if (data.status === 'success') {
         setCartData(data);
         toast.error("Product deleted successfully");
@@ -32,7 +32,7 @@ function CartItem({cartItem, setCartData}) {
       setCartData(data);
       setTotal(data.data.totalCartPrice);
     }
-    console.log(data);
+
   }
 
   return (
@@ -49,6 +49,7 @@ function CartItem({cartItem, setCartData}) {
           onClick={() => deleteCartItem(cartItem?.product?._id)}
           className="title flex items-center justify-between gap-2 rounded-md py-[2.5px] px-2 border border-[#0aad0a]"
         >
+
           {!spinner ? (
             <div className="flex items-center justify-center gap-2">
               <FaRegTrashCan color="0aad0a" /> Remove
@@ -60,6 +61,7 @@ function CartItem({cartItem, setCartData}) {
               spinPulse
             />
           )}
+          
         </button>
       </div>
       <div className="ml-auto flex items justify-center gap-2">

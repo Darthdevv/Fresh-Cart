@@ -17,7 +17,6 @@ function ProductItem({ product }) {
   async function addProductToCart(productId) {
     setLoading(true);
     const data = await addToCart(productId);
-    console.log(data);
     if (data.status == 'success') {
       toast.success('Product added successfully');
       setCounter(data.numOfCartItems);
@@ -28,7 +27,6 @@ function ProductItem({ product }) {
 
   async function addProductToWishlist(productId) {
     const data = await addToWishlist(productId);
-    console.log(data)
     if (data.status == 'success') {
       setBeat(true);
       toast.success('Product added to wishlist');

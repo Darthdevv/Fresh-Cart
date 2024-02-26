@@ -16,7 +16,6 @@ function WishListItem({ item, setWishlistData}) {
   async function removeProductFromWishlist(productId) {
     setSpinner(true);
     const data = await removeFromWishlist(productId);
-    console.log(data);
     if (data.status === "success") {
       window.location.reload();
       setWishlistData(data);
@@ -35,6 +34,7 @@ function WishListItem({ item, setWishlistData}) {
           onClick={() => removeProductFromWishlist(item._id)}
           className="title flex items-center justify-between gap-2 rounded-md py-[2.5px] px-2 border border-[#0aad0a]"
         >
+
           {!spinner ? (
             <div className="flex items-center justify-center gap-2">
               <FaRegTrashCan color="0aad0a" /> Remove
@@ -46,6 +46,7 @@ function WishListItem({ item, setWishlistData}) {
               spinPulse
             />
           )}
+
         </button>
       </div>
     </div>

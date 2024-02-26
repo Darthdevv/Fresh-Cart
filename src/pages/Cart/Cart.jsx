@@ -21,14 +21,12 @@ function Cart() {
       } else {
         setCartData(data);
       }
-      console.log(data);
       setLoading(false);
     })()
   }, [getCart]);
 
   async function deleteAllItems() {
       const data = await clearCart();
-      console.log(data)
     if (data?.message === 'success') {
       setCartData(null);
       setCounter(0);
@@ -58,6 +56,7 @@ function Cart() {
               Clear Cart
             </button>
           </div>
+
           {cartData?.data?.products?.map((cartItem) => (
             <CartItem
               key={cartItem._id}
@@ -65,6 +64,7 @@ function Cart() {
               setCartData={setCartData}
             />
           ))}
+          
           <Link to={`/address/${cartData.data._id}`}>
             <button className="btn btn-accent my-3 text-lg font-semibold">
               Place Order
