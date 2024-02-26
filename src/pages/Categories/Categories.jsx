@@ -24,7 +24,7 @@ function Categories() {
             {data?.data.data.map((category) => (
               <div
                 className="w-[23%] max-lg:w-[29%] max-md:w-[45%] max-sm:w-[100%] grid place-items-center border border-[#f0f3f2] rounded product m-2 shadow-md cursor-pointer"
-                key={category.id}
+                key={category._id}
               >
                 <img className="w-[200px] h-[300px] mb-2" src={category.image} alt="categories" />
                 <div className=" w-full p-2 title border border-[#f0f3f2]">{category.name}</div>
