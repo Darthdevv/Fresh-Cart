@@ -37,6 +37,7 @@ function Login() {
 
   async function forgotPassword(email) {
     const data = await forgetPassword(email);
+    // const code = await resetCode('195397');
     if (data.statusMsg === 'success') {
       toast(data.message);
     }
@@ -112,9 +113,9 @@ function Login() {
 
               {errorMessage ? <p className="error">{errorMessage}</p> : ""}
 
-              <div className="self-end mt-4">
+              <div className="flex items-center justify-between mt-4">
                 <div>
-                  <button onClick={()=> forgotPassword(values.email)}>
+                  <button className="title hover:text-[#0aad0a] hover:underline" type="submit" onClick={()=> forgotPassword(values.email)}>
                     Forgot your password?
                   </button>
                 </div>

@@ -12,6 +12,13 @@ async function forgetPassword(email) {
     .catch((err) => err);
 }
 
+async function resetCode(resetCode) {
+  return await axios
+    .post(baseUrl + "/api/v1/auth/verifyResetCode", { resetCode })
+    .then(({ data }) => data)
+    .catch((err) => err);
+}
+
 async function addToCart(productId) {
   return await axios.post(baseUrl + '/api/v1/cart/', { productId }, {
     headers: {
@@ -94,7 +101,7 @@ export default function StoreContextProvider({ children }) {
   const [total, setTotal] = useState(0)
 
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, getWishList, addToWishlist, removeFromWishlist, updateProductQuantity, clearCart, checkoutSession, forgetPassword }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, getWishList, addToWishlist, removeFromWishlist, updateProductQuantity, clearCart, checkoutSession, forgetPassword, resetCode }}>
       {children}
     </StoreContext.Provider>
   )
