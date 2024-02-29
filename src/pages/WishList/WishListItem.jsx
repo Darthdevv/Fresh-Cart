@@ -10,8 +10,19 @@ import { useState } from "react";
 function WishListItem({ item, setWishlistData}) {
 
   const [spinner, setSpinner] = useState(false);
-  const { removeFromWishlist, getWishList } = useContext(StoreContext);
+  const { removeFromWishlist, getWishList, addToCart, setCounter, setTotal } = useContext(StoreContext);
+  const [loading, setLoading] = useState(false);
 
+  async function addProductToCart(productId) {
+    setLoading(true);
+    const data = await addToCart(productId);
+    if (data.status == "success") {
+      toast.success("Product added successfully");
+      setCounter(data.numOfCartItems);
+      setTotal(data.data.totalCartPrice);
+      setLoading(false);
+    }
+  }
 
   async function removeProductFromWishlist(productId) {
     setSpinner(true);
@@ -26,27 +37,40 @@ function WishListItem({ item, setWishlistData}) {
 
   return (
     <div className="w-full p-2 flex items-center justify-start gap-8 border-b border-[#dcdada]">
-      <img className="w-[100px]" src={item?.imageCover} alt="item" />
-      <div>
-        <p className="title">{item?.title}</p>
-        <div className="text-[#0aad0a] my-2">Price : {item?.price} EGP</div>
+      <div className="flex items-center justify-center gap-8">
+        <img className="w-[100px]" src={item?.imageCover} alt="item" />
+        <div>
+          <p className="title">{item?.title}</p>
+          <div className="text-[#0aad0a] my-2">Price : {item?.price} EGP</div>
+          <button
+            onClick={() => removeProductFromWishlist(item._id)}
+            className="title flex items-center justify-between gap-2 rounded-md py-[2.5px] px-2 border border-[#0aad0a]"
+          >
+            {!spinner ? (
+              <div className="flex items-center justify-center gap-2">
+                <FaRegTrashCan color="0aad0a" /> Remove
+              </div>
+            ) : (
+              <FontAwesomeIcon
+                className="text-[#0aad0a]"
+                icon={faSpinner}
+                spinPulse
+              />
+            )}
+          </button>
+        </div>
+      </div>
+      <div className="ml-auto">
         <button
-          onClick={() => removeProductFromWishlist(item._id)}
-          className="title flex items-center justify-between gap-2 rounded-md py-[2.5px] px-2 border border-[#0aad0a]"
+          onClick={() => addProductToCart(item._id)}
+          disabled={loading}
+          className="btn-accent rounded-md p-2 w-full font-bold flex-shrink-0 text-[#fff] bg-main"
         >
-
-          {!spinner ? (
-            <div className="flex items-center justify-center gap-2">
-              <FaRegTrashCan color="0aad0a" /> Remove
-            </div>
+          {loading ? (
+            <FontAwesomeIcon icon={faSpinner} spinPulse />
           ) : (
-            <FontAwesomeIcon
-              className="text-[#0aad0a]"
-              icon={faSpinner}
-              spinPulse
-            />
+            "Add to Cart"
           )}
-
         </button>
       </div>
     </div>
