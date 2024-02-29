@@ -1,14 +1,17 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import { loginSchema } from "../Schemas";
 import { useFormik } from "formik";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
+import { StoreContext } from "../../../context/storeContext";
+import { toast } from "react-toastify";
 
 function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const { forgetPassword } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const {
@@ -31,6 +34,14 @@ function Login() {
       actions.resetForm();
     },
   });
+
+  async function forgotPassword(email) {
+    const data = await forgetPassword(email);
+    if (data.statusMsg === 'success') {
+      toast(data.message);
+    }
+    console.log(data);
+  }
 
   async function sendDataToApi(values) {
     setLoading(true);
@@ -55,7 +66,6 @@ function Login() {
         <div className="hero-content flex-col w-full">
           <div className="card shrink-0 w-full max-w-[800px]">
             <form onSubmit={handleSubmit} className="card-body w-full">
-
               <h1 className="title text-2xl">Login Now :</h1>
 
               <div className="form-control">
@@ -103,19 +113,25 @@ function Login() {
               {errorMessage ? <p className="error">{errorMessage}</p> : ""}
 
               <div className="self-end mt-4">
-                <button
-                  disabled={!(isValid && dirty)}
-                  type="submit"
-                  className="btn btn-accent"
-                >
-                  {loading ? (
-                    <FontAwesomeIcon icon={faSpinner} spinPulse />
-                  ) : (
-                    "login"
-                  )}
-                </button>
+                <div>
+                  <button onClick={()=> forgotPassword(values.email)}>
+                    Forgot your password?
+                  </button>
+                </div>
+                <div>
+                  <button
+                    disabled={!(isValid && dirty)}
+                    type="submit"
+                    className="btn btn-accent"
+                  >
+                    {loading ? (
+                      <FontAwesomeIcon icon={faSpinner} spinPulse />
+                    ) : (
+                      "login"
+                    )}
+                  </button>
+                </div>
               </div>
-              
             </form>
           </div>
         </div>

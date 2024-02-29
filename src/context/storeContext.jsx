@@ -5,6 +5,13 @@ import { baseUrl } from "../api/api";
 
 export const StoreContext = createContext(0);
 
+async function forgetPassword(email) {
+  return await axios
+    .post(baseUrl + "/api/v1/auth/forgotPasswords", { email })
+    .then(({ data }) => data)
+    .catch((err) => err);
+}
+
 async function addToCart(productId) {
   return await axios.post(baseUrl + '/api/v1/cart/', { productId }, {
     headers: {
@@ -87,7 +94,7 @@ export default function StoreContextProvider({ children }) {
   const [total, setTotal] = useState(0)
 
   return (
-    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, getWishList, addToWishlist, removeFromWishlist, updateProductQuantity, clearCart, checkoutSession }}>
+    <StoreContext.Provider value={{ counter, setCounter, addToCart, getCart, total, setTotal, removeFromCart, getWishList, addToWishlist, removeFromWishlist, updateProductQuantity, clearCart, checkoutSession, forgetPassword }}>
       {children}
     </StoreContext.Provider>
   )
