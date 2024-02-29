@@ -10,15 +10,15 @@ import { useState } from "react";
 function WishListItem({ item, setWishlistData}) {
 
   const [spinner, setSpinner] = useState(false);
-  const { removeFromWishlist } = useContext(StoreContext);
+  const { removeFromWishlist, getWishList } = useContext(StoreContext);
 
 
   async function removeProductFromWishlist(productId) {
     setSpinner(true);
     const data = await removeFromWishlist(productId);
+    const products = await getWishList();
     if (data.status === "success") {
-      window.location.reload();
-      setWishlistData(data);
+      setWishlistData(products);
       toast.error("Product removed from wishlist");
       setSpinner(false);
     }
