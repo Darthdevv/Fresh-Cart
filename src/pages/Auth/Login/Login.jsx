@@ -115,7 +115,7 @@ function Login() {
 
               <div className="flex items-center justify-between mt-4">
                 <div>
-                  <button className="title hover:text-[#0aad0a] hover:underline" type="submit" onClick={()=> forgotPassword(values.email)}>
+                  <button className="title hover:text-[#0aad0a] hover:underline" type="button" onClick={()=> forgotPassword(values.email)}>
                     Forgot your password?
                   </button>
                 </div>
