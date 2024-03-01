@@ -12,7 +12,7 @@ function AllOrders() {
 
   let { data, isLoading } = useQuery("getOrders", getOrders);
 
-  if (!data || data == undefined) {
+  if (!data || data == undefined || data == null) {
     return <Loader />;
   }
 
