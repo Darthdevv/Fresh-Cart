@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../context/storeContext";
 import Loader from "../../components/Loader/Loader";
-import CartItem from "./cartItem";
+import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
 import { Link } from "react-router-dom";
 
@@ -64,7 +64,7 @@ function Cart() {
               setCartData={setCartData}
             />
           ))}
-          
+
           <Link to={`/address/${cartData.data._id}`}>
             <button className="btn btn-accent my-3 text-lg font-semibold">
               Place Order
