@@ -21,7 +21,7 @@ Browse Products: Users can browse through a variety of fresh produce, groceries,
  Live Demo 🔗
 </a>
 
-![ScreenShot](/vite-project/screenshot.png)
+![ScreenShot](/vite-project/src/assets/images/screenshot.png)
 
 <p align="center">
   <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
