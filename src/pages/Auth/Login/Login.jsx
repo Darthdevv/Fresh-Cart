@@ -37,7 +37,6 @@ function Login() {
 
   async function forgotPassword(email) {
     const data = await forgetPassword(email);
-    // const code = await resetCode('195397');
     if (data.statusMsg === 'success') {
       toast(data.message);
     }
